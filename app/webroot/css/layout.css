@@ -1,0 +1,808 @@
+/* CSS Document */
+
+html, body, ul, ol, li, p, h1 , h2, h3, h4, h5, h6, form, fieldset, a, div, img, blockquote
+{
+	margin: 0px;
+	padding: 0px;
+	border: 0px;
+}
+
+html, body
+{
+	font-family: Arial, Helvetica, sans-serif;
+	background: #7b0e2c url(../img/bg.jpg) top repeat-x;
+}
+
+body
+{
+	font-size: 12px;
+}
+
+.clear
+{
+	clear: both;
+	font-size: 0;
+	height: 0;
+}
+
+.center
+{
+	text-align: center;
+	margin: 0 auto;
+}
+
+a
+{
+	color: #7b1934;
+}
+
+/*************************************************** Typography ***************************************************/
+
+h1, h2, h3, h4, h5
+{
+	color: #252525;
+	padding-top: 8px;
+	padding-bottom: 6px;
+	font-weight: normal;
+	/*font-family: "Times New Roman", Times, serif;*/
+}
+
+h1
+{
+	font-size: 24px;	
+	padding-top: 24px;
+}
+
+h2
+{
+	font-size: 20px;
+	padding-top: 20px;
+}
+
+h3
+{
+	font-size: 18px;
+	padding-top: 20px;
+}
+
+h4
+{
+	font-size: 16px;
+}
+
+h5
+{
+	font-size: 14px;
+	font-weight: bold;
+}
+
+h6
+{
+	font-size: 13px;
+	font-weight: bold;
+}
+
+p
+{
+	color: #252525;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	margin-top: 6px;
+	padding-bottom: 14px;
+	line-height: 1.5;
+}
+
+/*************************************************** Layout Divs ***************************************************/
+
+#main-wrapper
+{
+	width: 1024px;
+	margin: 0 auto;
+	background: url(../img/content-bg.gif) repeat-y;
+}
+
+#header
+{
+	width: 1024px;
+	height: 163px;
+	background: url(../img/header-bg.jpg) no-repeat;
+}
+
+#title{
+	float:left;
+	background: url(../img/logo.gif) no-repeat;
+	background-position: 0px 0px;
+	width:229px;
+	margin-top:125px;
+	margin-left:30px;
+	height:38px;
+	/*font-family:"Times New Roman", Times, serif;*/
+}
+
+#title a{
+	text-decoration:none;
+	font-size:14px;	
+	line-height:15px;
+	font-weight:bold;
+}
+
+#title a span{
+	color:#000;	
+	font-size:18px;
+	line-height:20px;
+
+}
+#main-text
+{
+	width: 290px;
+	margin-left: 29px;
+	display: inline;
+	float: left;
+	padding-top: 20px;
+}
+
+#main-photo
+{
+	width: 290px;
+	margin-left: 29px;
+	display: inline;
+	float: right;
+	padding-top: 20px;
+}
+
+#navigation
+{
+	width: 728px;
+	height: 163px;
+	float: left;
+	background: url(../img/nav-bg.jpg) no-repeat;
+}
+
+#content-wrapper
+{
+	width: 1024px;
+	margin: 20px auto 0 auto;
+	padding-bottom: 20px;
+}
+
+#content
+{
+	float: left;
+	padding-left: 34px;
+	width: 960px;
+	padding-top: 10px;
+}
+
+
+/******************************************************* Header Styles *******************************************************/
+
+#header img.logo
+{
+	float: left;
+	margin-top: 125px;
+	margin-left: 33px;
+	display: inline;
+}
+
+/*************************************************** Main Content Styles ***************************************************/
+
+/*#content-wrapper ul
+{
+	padding: 15px 10px 10px 20px;
+}
+
+#content-wrapper ul li
+{
+	font-size: 12px;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #1e1f1f;
+	padding-bottom: 9px;
+	padding-left: 16px;
+	background: url(../img/list-bullet.gif) left 5px no-repeat;
+	list-style: none;
+}*/
+
+#content-bottom
+{
+	background: url(../img/content-bot-bg.gif) no-repeat;
+	height: 12px;
+	font-size: 1px;
+}
+
+#content .info-box
+{
+	height: 80px;
+	width: 272px;
+	padding-left: 135px;
+	padding-right: 15px;
+	background: #c08293 url(../img/wine-tasting.jpg) no-repeat;
+}
+
+#content .info-box h3
+{
+	color: #fff;
+	margin: 0;
+	padding: 8px 0 3px 0;
+	width: 271px;
+	text-transform: uppercase;
+	border-bottom: 1px solid #a95b70;
+}
+
+#content .info-box p
+{
+	color: #fff;
+	margin: 0;
+	padding: 4px 0 0 0;
+}
+
+#content .info-box p a
+{
+	color: #fff;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+#content .info-box-small
+{
+	height: 68px;
+	width: 288px;
+	padding-left: 119px;
+	padding-right: 15px;
+	background: #c08293 url(../img/red-wine.jpg) no-repeat;
+}
+
+#content .info-box-small h5
+{
+	color: #fff;
+	margin: 0;
+	padding: 11px 0 3px 0;
+	width: 284px;
+	text-transform: uppercase;
+	border-bottom: 1px solid #a95b70;
+}
+
+#content .info-box-small p
+{
+	color: #fff;
+	margin: 0;
+	padding: 4px 0 0 0;
+}
+
+#content .info-box-small p a
+{
+	color: #fff;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+#content .info-box p a:hover, #content .info-box-small p a:hover
+{
+	color: #66132a;
+}
+
+#content .info-box-small#white-wine
+{
+	background: #c08293 url(../img/white-wine.jpg) no-repeat;
+	margin-bottom: 10px;
+}
+
+
+#content .info-box-small h5.red
+{
+	color: #66132a;
+}
+
+/************************************************ Navigation Styles ************************************************/
+
+#navigation ul
+{
+	height: 24px;
+	line-height: 24px;
+	margin: 139px 0 0 0;
+	display: inline;
+	float: left;
+	width: 480px;
+	padding-left: 35px;
+}
+
+#navigation ul li
+{
+	display: inline;
+	float: left;
+}
+
+#navigation ul li a:link,
+#navigation ul li a:visited
+{
+	display: inline;
+	float: left;
+	text-decoration: none;
+	color: #894659;
+	font-size: 14px;
+	font-weight: bold;
+	text-align: center;	
+	margin-right: 1px;
+	padding: 0 10px 0 7px;
+	background: url(../img/nav-divide.gif) right 7px no-repeat;
+}
+
+#navigation ul li a:hover
+{
+	color: #636363;
+}
+
+#home #navigation ul li a#home-link, #about #navigation ul li a#about-link
+{
+	color: #636363;
+}
+
+#navigation ul li a.no-divide
+{
+	background: none;
+}
+
+/*************************************************** Footer Styles ***************************************************/
+
+#footer
+{
+	width: 1024px;
+	margin: 0 auto;
+	height: 50px;
+        text-align: center;
+        margin-top: 10px;
+	color: #fff;
+	font-size: 11px;
+	font-weight: normal;
+	padding: 0 10px 0 8px;        
+}
+
+#footer .footer-info {
+    width: 200px;
+    float: left;
+    clear: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#footer a
+{
+    color: #fff;
+    text-decoration: none;
+}
+
+/* table */
+table { width:960px; border:1px solid #666; }
+table th{ background:#889d14; color:black; text-align: left; padding:7px 10px; border:solid 1px #d2d1cb;}
+table td{ background:#fbfcfc;  border:solid 1px #e0e0e0; padding:5px 10px; }
+table tr.altrow td{ background:#f8f8f8; }
+table tr:hover td{ background:#d1c318; }
+table a.ico{ }
+table th.actions { width:80px; }
+table tr th a {	padding-right: 16px; }
+table tr th a.asc { background: url(../img/sort-asc.png) no-repeat right center; }
+table tr th a.desc { background: url(../img/sort-desc.png) no-repeat right center; }
+
+.related table { width:960px; border:1px solid #666; margin-bottom: 10px;}
+.related table th{ background:#889d14; color:black; text-align: left; padding:7px 10px; border:solid 1px #d2d1cb;}
+.related table td{ background:#fbfcfc;  border:solid 1px #e0e0e0; padding:5px 10px; }
+.related table tr.altrow td{ background:#f8f8f8; }
+.related table tr:hover td{ background:#d1c318; }
+.related table a.ico{ }
+.related table th.actions { width:80px; }
+.related table tr th a { padding-right: 16px; }
+
+#bottom-navigation {
+/*    margin-left: 200px;*/
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.language {
+    margin-right: 10px;
+    float: left;
+    width: 16px;
+    height: 11px;
+    background-repeat: no-repeat;    
+}
+
+#english {
+    background: url(../img/gb.gif);
+}
+
+#portuguese {
+    background: url(../img/pt.gif);
+}
+
+#spanish {
+    background: url(../img/es.gif);
+}
+
+#french {
+    background: url(../img/fr.gif);
+}
+#italian {
+    background: url(../img/it.gif);
+}    
+
+/** Paging **/
+.paging {
+	/*background:#fff;*/
+	color: #ccc;
+	margin-top: 1em;
+	clear:both;
+        width: 716px;
+}
+.paging .current,
+.paging .disabled,
+.paging a {
+	text-decoration: none;
+	padding: 5px 8px;
+	display: inline-block
+}
+.paging > span {
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-left: 0;
+}
+.paging > span:hover {
+	background: #efefef;
+}
+.paging .prev {
+	border-left: 1px solid #ccc;
+	-moz-border-radius: 4px 0 0 4px;
+	-webkit-border-radius: 4px 0 0 4px;
+	border-radius: 4px 0 0 4px;
+}
+.paging .next {
+	-moz-border-radius: 0 4px 4px 0;
+	-webkit-border-radius: 0 4px 4px 0;
+	border-radius: 0 4px 4px 0;
+}
+.paging .disabled {
+	color: #ddd;
+}
+.paging .disabled:hover {
+	background: transparent;
+}
+.paging .current {
+	background: #efefef;
+	color: #c73e14;
+}
+/*************************************************** view.ctp Styles ***************************************************/
+dl {
+    margin-top: 0px;
+    padding-top: 0px;
+}
+
+dl dt {
+    width: 100px;
+    float: left;
+    font-weight: bold;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    clear: both;
+    padding: 4px;
+}
+
+dl dd {
+    width: 500px;
+    float: left;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    padding: 4px;
+    background-color: white;
+    border: black solid 1px;
+    margin-left: 10px;
+}
+
+.related {
+    float:left;
+    clear: left;
+}
+
+/*************************************************** Form Styles ***************************************************/
+.input {
+    float:left;
+    clear: both;
+    margin-bottom: 5px;
+}
+
+.input.text.required.error {
+    width:100%;
+}    
+
+.input input {
+    float: right;
+    display: block;    
+}
+.input label {
+    margin-top: 4px;
+    float: left;
+    display: block;
+    width: 90px;
+    font-weight: bold;
+}
+
+.input input {
+    float: left;
+    display: block;    
+}
+
+.submit {
+    height: 50px;
+}
+.submit input[type=submit],button[type=reset] {
+    width: 120px;
+    height: 34px;
+    position: relative;
+    margin-top: 3px;
+    padding: 9px;
+    background-color: #889d14;
+    display: inline-block;
+    color: white;
+    cursor: pointer;
+    text-align: center;
+    font: 14px/100% Arial, Helvetica, sans-serif;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    float: left;
+    text-decoration: none;
+    clear: left;
+}
+button[type=reset] {
+    /*float: right;*/
+}
+.submit input[type=submit]:hover,button[type=reset]:hover {
+    /*background-color: #80b0da;*/
+    text-decoration: underline;
+}
+
+legend {
+    font-size: 11pt;
+    position: relative;
+    padding: 4px 0 4px 0;
+    color: white;
+    background-color: #889d14;
+    padding-left: 10px;
+    padding-right: 10px;    
+}
+
+textarea {
+    float: left;
+    display: block;        
+}
+
+select {
+    float: left;
+    display: block;        
+}
+
+.error-message {
+    float:left;
+    width: auto;
+    margin-top: 2px;
+    margin-left: 10px;
+    color: red;
+    font-weight: bold;
+    padding: 2px;
+}
+
+fieldset {
+	border-style: solid;
+        border-width: thin;
+        border-color: #7B1934;
+	margin-bottom: 1em;
+	padding: 16px 10px;
+}
+.form {
+    clear: left;
+}
+/*************************************************** Other Styles ***************************************************/
+
+
+#flashMessage, #authMessage {
+    float: left;
+    clear: left;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: red;
+}
+
+#wine-collection {
+    position: absolute;
+    left: 1128px; 
+    height: 512px; 
+    width: 100px;
+    top: 13px;     
+}
+
+/*#sample-bar .carousel {
+padding: 10px 0 0 0;
+margin: 0 0 20px 10px;
+position: relative;
+width: 280px;
+}*/
+
+.prev, .next {
+display: block;
+float: left;
+width: 80px;
+text-decoration: none;
+}
+
+.jx-bar {
+    height:80px;
+}
+
+.cellar {
+    border: solid #000 1px;
+    width: auto;
+    margin: auto;
+    background-color: #bbb;
+    clear: both;    
+}
+
+.cellar td {
+    border: solid #000 1px;
+    width: 52px;
+    height: 52px;
+}
+.related .cellar {
+    width: auto;
+}
+
+.droppable {
+    width: 50px;
+    height: 50px;    
+}
+.draggable {
+    float: left;
+}
+
+label {
+    color: #000;
+    display: block;    
+}
+
+#storages-index {
+    height: 1280px;
+}
+
+#bottom-bar ul li .input label {
+    margin-top: 0px;
+    float: none;
+    font-size: 11px;
+    width: auto;
+}
+
+#bottom-bar select {
+    font-size: 11px;
+}
+
+#bottom-bar .input {
+    margin: 0;
+    padding: 0;
+}
+
+#bottom-bar .submit input[type="submit"], button[type="reset"] {
+    width: 60px;
+    font-size: 11px;
+}
+
+#mycarousel {
+    height: 412px;
+}
+
+.jcarousel-skin-tango .jcarousel-clip-vertical {
+width: 75px;
+height: 395px;
+}
+
+.new-button {
+    float:left;
+    display:block;
+    height:15px;
+    text-align:center;
+    cursor: pointer;
+    color:#fff;
+    /*text-transform:uppercase;*/
+    /*font-weight:bold;*/
+    padding:10px;
+    background: #ff6f00;
+    background: #889d14;
+    border-radius: 7px;
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    clear: left;
+}
+
+.new-button a {
+    text-decoration: none;
+    color: white;
+}
+
+.new-button a:hover {
+    text-decoration: underline;
+    color: white;
+}
+
+h2 {
+    float:left;
+    clear: both;
+}
+.wineCarouselText {
+    width: 50px;
+    height: 50px;
+}
+.wineCarouselImage {
+    width: 50px;
+    height: 50px;
+}
+.language-footer {
+    margin-top: 0px;
+    padding-top: 0px;
+}
+
+#bottom-bar #cabinets-select {
+    margin: 0;
+    padding: 0;    
+}
+#bottom-bar #producers-select {
+    margin: 0;
+    padding: 0;       
+}
+#bottom-bar #regions-select {
+    margin: 0;
+    padding: 0;    
+}
+
+#bottom-bar #CabinetCabinetId {
+    width: 81px;
+}
+
+#bottom-bar #WineProducerId {
+    width: 165px;
+}
+
+#bottom-bar #WineRegionId {
+    width: 105px;
+}
+
+.filter label {
+    margin-top: 0px;
+    float: none;
+    font-size: 11px;
+    width: auto;
+}
+
+.filter select {
+    font-size: 11px;    
+}
+
+.filter .input {
+    margin: 0;
+    padding: 0;
+    clear: none;
+    margin-right: 10px;
+}
+
+.filter .submit input[type="submit"] {
+    width: 56px;
+    clear: none;
+}
+
+.filter {
+    clear: left;
+}
+
+.filter #CabinetCabinetId {
+    width: 81px;
+}
+
+.filter #WineProducerId {
+    width: 165px;
+}
+
+.filter #WineRegionId {
+    width: 105px;
+}

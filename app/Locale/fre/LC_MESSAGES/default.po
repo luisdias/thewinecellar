@@ -1,0 +1,711 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: The wine cellar\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-12-26 19:14-0000\n"
+"PO-Revision-Date: 2011-12-26 19:16-0000\n"
+"Last-Translator: LD <ld@internet.com>\n"
+"Language-Team: Luís Dias\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;gettext;gettext_noop\n"
+"X-Poedit-Basepath: D:\\xampp\\htdocs\\thewinecellar\\app\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: Controller/AppController.php:44
+msgid "Invalid login or password"
+msgstr "Invalid login ou mot de passe"
+
+#: Controller/AppController.php:45
+msgid "Without access permission"
+msgstr "Sans autorisation d'accès"
+
+#: Controller/AppController.php:66
+#: Controller/AppController.php:77
+#: Controller/AppController.php:151
+msgid "Invalid "
+msgstr "Invalide"
+
+#: Controller/AppController.php:88
+msgid "New"
+msgstr "Nouveau"
+
+#: Controller/AppController.php:90
+msgid "Edit"
+msgstr "Modifier"
+
+#: Controller/AppController.php:114
+msgid " has been saved"
+msgstr "a été enregistré"
+
+#: Controller/AppController.php:124
+msgid " could not be saved. Please, try again."
+msgstr "ne pouvait pas être sauvé. S'il vous plaît, essayez de nouveau."
+
+#: Controller/AppController.php:160
+msgid " deleted"
+msgstr "supprimé"
+
+#: Controller/AppController.php:169
+msgid "There are related records. Record was not deleted."
+msgstr "Il ya des dossiers connexes. Enregistrement n'a pas été supprimé."
+
+#: Controller/CabinetsController.php:34
+msgid "Cabinet"
+msgstr "Armoire"
+
+#: Controller/CellarsController.php:34
+msgid "Cellar"
+msgstr "Cave"
+
+#: Controller/CountriesController.php:34
+msgid "Country"
+msgstr "Pays"
+
+#: Controller/GrapetypesController.php:34
+msgid "Grape type"
+msgstr "Type de raisin"
+
+#: Controller/MembersController.php:33
+msgid "Member"
+msgstr "Utilisateur"
+
+#: Controller/MembersController.php:48
+msgid "Your username/password combination was incorrect."
+msgstr "Votre nom d'utilisateur / mot de passe est incorrect."
+
+#: Controller/MembersController.php:64
+msgid "Password updated successfully"
+msgstr "Mot de passe mis à jour avec succès"
+
+#: Controller/MembersController.php:67
+#, fuzzy
+msgid "Passwords do not match. Please try again"
+msgstr "ne pouvait pas être sauvé. S'il vous plaît, essayez de nouveau."
+
+#: Controller/ProducersController.php:34
+msgid "Producer"
+msgstr "Producteur"
+
+#: Controller/RegionsController.php:34
+msgid "Region"
+msgstr "Région"
+
+#: Controller/StoragesController.php:35
+msgid "Storage"
+msgstr "Stockage"
+
+#: Controller/WinesController.php:34
+msgid "Wine"
+msgstr "Vin"
+
+#: Controller/WinesController.php:89
+msgid "Invalid wine"
+msgstr "Vin invalide"
+
+#: Controller/WinesController.php:102
+msgid "The wine picture has been saved"
+msgstr "L'image du vin a été enregistré"
+
+#: Controller/WinesController.php:105
+msgid "The wine picture could not be saved. Please, try again."
+msgstr "L'image du vin ne pouvait être sauvé. S'il vous plaît, essayez de nouveau."
+
+#: Controller/WinesController.php:203
+msgid "No file Selected"
+msgstr "Aucun fichier sélectionné"
+
+#: Controller/WinetypesController.php:34
+msgid "Wine type"
+msgstr "Type de vin"
+
+#: Model/Cabinet.php:50
+msgid "Cabinet code is required"
+msgstr "Code du armoire est nécessaire"
+
+#: Model/Cabinet.php:55
+msgid "Between 3 to 30 lines"
+msgstr "Entre 3 à 30 lignes"
+
+#: Model/Cabinet.php:61
+msgid "Between 3 to 10 columns"
+msgstr "Entre 3 et 10 colonnes"
+
+#: Model/Cabinet.php:66
+msgid "Select the cellar"
+msgstr "Sélectionnez la cave"
+
+#: Model/Cellar.php:36
+msgid "Cellar name is required"
+msgstr "Nom Cave est nécessaire"
+
+#: Model/Country.php:38
+msgid "Country name is required"
+msgstr "Nom du pays est nécessaire"
+
+#: Model/Grapetype.php:36
+msgid "Grape name is required"
+msgstr "Nom de raisin est nécessaire"
+
+#: Model/Member.php:34
+#, fuzzy
+msgid "User name is required"
+msgstr "Nom Cave est nécessaire"
+
+#: Model/Member.php:38
+msgid "User name already in use"
+msgstr "Nom d'utilisateur déjà utilisé"
+
+#: Model/Member.php:42
+#: Model/Member.php:52
+msgid "Minimun size : 5 characters"
+msgstr "Taille minimale: 5 caractères"
+
+#: Model/Member.php:47
+#, fuzzy
+msgid "Password is required"
+msgstr "Code du armoire est nécessaire"
+
+#: Model/Member.php:57
+msgid "Passwords do not match"
+msgstr "Les mots de passe ne correspondent pas"
+
+#: Model/Producer.php:37
+msgid "Producer name is required"
+msgstr "Nom du producteur est nécessaire"
+
+#: Model/Region.php:37
+msgid "Region name is required"
+msgstr "Nom de la région est nécessaire"
+
+#: Model/Wine.php:41
+msgid "Wine name is required"
+msgstr "Nom du vin est requis"
+
+#: Model/Wine.php:45
+msgid "Select the country"
+msgstr "Sélectionnez le pays"
+
+#: Model/Wine.php:49
+msgid "Select the producer"
+msgstr "Sélectionnez le producteur"
+
+#: Model/Wine.php:53
+msgid "Select the region"
+msgstr "Sélectionnez la région"
+
+#: Model/Wine.php:57
+msgid "Select the wine type"
+msgstr "Sélectionnez le type de vin"
+
+#: Model/Wine.php:61
+msgid "Select the grape type"
+msgstr "Sélectionnez le type de raisin"
+
+#: Model/Winetype.php:36
+msgid "Wine type name is required"
+msgstr "Nom du type de vin est requis"
+
+#: View/Cabinets/ajax_get_cellar_cabinets.ctp:22
+#: View/Cabinets/form.ctp:31
+msgid "---Select---"
+msgstr "--- Choisissez ---"
+
+#: View/Cabinets/form.ctp:25
+msgid "Edit Cabinet"
+msgstr "Modifier armoire"
+
+#: View/Cabinets/form.ctp:28
+msgid "Enter a code for the cabinet"
+msgstr "Entrez un code pour l'armoire"
+
+#: View/Cabinets/form.ctp:29
+msgid "Enter the number of lines of the cabinet ( 3 to 30 )"
+msgstr "Entrez le nombre de lignes de l'armoire (3 à 30)"
+
+#: View/Cabinets/form.ctp:30
+msgid "Enter the number of columns of the cabinet ( 3 to 10 )"
+msgstr "Entrez le nombre de colonnes de l'armoire (3 à 10)"
+
+#: View/Cabinets/form.ctp:34
+msgid "Submit"
+msgstr "Envoyer"
+
+#: View/Cabinets/index.ctp:22
+#: View/Cellars/view.ctp:93
+msgid "New Cabinet"
+msgstr "Nouveau armoire"
+
+#: View/Cabinets/index.ctp:24
+#: View/Layouts/default.ctp:70
+msgid "Cabinets"
+msgstr "Armoires"
+
+#: View/Cabinets/index.ctp:31
+#: View/Cellars/index.ctp:35
+#: View/Cellars/view.ctp:75
+#: View/Countries/index.ctp:8
+#: View/Countries/view.ctp:22
+#: View/Countries/view.ctp:46
+#: View/Elements/related_wines.ctp:36
+#: View/Grapetypes/index.ctp:28
+msgid "Actions"
+msgstr "Actions"
+
+#: View/Cabinets/index.ctp:44
+#: View/Cellars/index.ctp:50
+#: View/Cellars/view.ctp:85
+#: View/Countries/index.ctp:17
+#: View/Countries/view.ctp:30
+#: View/Countries/view.ctp:54
+#: View/Elements/related_wines.ctp:58
+#: View/Grapetypes/index.ctp:36
+msgid "View"
+msgstr "Vue"
+
+#: View/Cabinets/index.ctp:46
+#: View/Cellars/index.ctp:52
+#: View/Cellars/view.ctp:87
+#: View/Countries/index.ctp:19
+#: View/Countries/view.ctp:32
+#: View/Countries/view.ctp:56
+#: View/Elements/related_wines.ctp:60
+#: View/Grapetypes/index.ctp:38
+msgid "Delete"
+msgstr "Supprimer"
+
+#: View/Cabinets/index.ctp:46
+#: View/Cellars/index.ctp:52
+#: View/Cellars/view.ctp:87
+#: View/Countries/index.ctp:19
+#: View/Countries/view.ctp:32
+#: View/Countries/view.ctp:56
+#: View/Elements/related_wines.ctp:60
+#: View/Grapetypes/index.ctp:38
+#, php-format
+msgid "Are you sure you want to delete # %s?"
+msgstr "Etes-vous sûr de vouloir supprimer #% s?"
+
+#: View/Cabinets/view.ctp:25
+#: View/Cellars/view.ctp:72
+msgid "Cabinet Code"
+msgstr "Code de armoire"
+
+#: View/Cabinets/view.ctp:30
+#: View/Cellars/view.ctp:73
+msgid "Lines"
+msgstr "Lignes"
+
+#: View/Cabinets/view.ctp:35
+#: View/Cellars/view.ctp:74
+msgid "Columns"
+msgstr "Colonnes"
+
+#: View/Cabinets/view.ctp:48
+msgid "Related Storages"
+msgstr "Stockages liés"
+
+#: View/Cabinets/view.ctp:52
+msgid "Line Number"
+msgstr "Numéro de ligne"
+
+#: View/Cabinets/view.ctp:53
+msgid "Column Number"
+msgstr "Numéro de la colonne"
+
+#: View/Cabinets/view.ctp:54
+msgid "Wine Id"
+msgstr "Vin"
+
+#: View/Cellars/form.ctp:25
+msgid "Edit Cellar"
+msgstr "Modifier Cave"
+
+#: View/Cellars/form.ctp:28
+msgid "Choose a name for the winery"
+msgstr "Choisissez un nom pour la cave"
+
+#: View/Cellars/form.ctp:29
+msgid "Enter the street name"
+msgstr "Entrez le nom de la rue"
+
+#: View/Cellars/form.ctp:30
+msgid "Enter the block"
+msgstr "Entrez le bloc"
+
+#: View/Cellars/form.ctp:31
+msgid "Enter the apartment number"
+msgstr "Entrez le numéro d'appartement"
+
+#: View/Cellars/form.ctp:32
+msgid "Enter the zip code"
+msgstr "Saisissez le code postal"
+
+#: View/Cellars/form.ctp:33
+msgid "Enter the city name"
+msgstr "Entrez le nom de la ville"
+
+#: View/Cellars/form.ctp:34
+msgid "Enter the state code"
+msgstr "Entrez le code d'état"
+
+#: View/Cellars/form.ctp:35
+#: View/Countries/form.ctp:28
+msgid "Enter the country name"
+msgstr "Entrez le nom du pays"
+
+#: View/Cellars/index.ctp:22
+msgid "New Cellar"
+msgstr "Nouvelle cave"
+
+#: View/Cellars/index.ctp:24
+#: View/Layouts/default.ctp:69
+msgid "Cellars"
+msgstr "Caves"
+
+#: View/Cellars/view.ctp:25
+msgid "Cellar Name"
+msgstr "Nom de la Cave"
+
+#: View/Cellars/view.ctp:30
+msgid "Street"
+msgstr "Rue"
+
+#: View/Cellars/view.ctp:35
+msgid "Block"
+msgstr "Bloc"
+
+#: View/Cellars/view.ctp:40
+msgid "Apt"
+msgstr "Appartement"
+
+#: View/Cellars/view.ctp:45
+msgid "Zip"
+msgstr "Code postal"
+
+#: View/Cellars/view.ctp:50
+msgid "City"
+msgstr "Ville"
+
+#: View/Cellars/view.ctp:55
+msgid "State"
+msgstr "Etat"
+
+#: View/Cellars/view.ctp:68
+msgid "Related Cabinets"
+msgstr "Armoires connexes"
+
+#: View/Countries/form.ctp:25
+msgid "Edit Country"
+msgstr "Modifier pays"
+
+#: View/Countries/form.ctp:29
+msgid "Enter the country code"
+msgstr "Entrez le code du pays"
+
+#: View/Countries/index.ctp:1
+msgid "New Country"
+msgstr "Nouveau pays"
+
+#: View/Countries/index.ctp:3
+#: View/Layouts/default.ctp:88
+msgid "Countries"
+msgstr "Pays"
+
+#: View/Countries/view.ctp:4
+msgid "Country Name"
+msgstr "Nom du pays"
+
+#: View/Countries/view.ctp:9
+msgid "Country Code"
+msgstr "Code du pays"
+
+#: View/Countries/view.ctp:17
+msgid "Related Producers"
+msgstr "Les producteurs associés"
+
+#: View/Countries/view.ctp:21
+msgid "Producer Name"
+msgstr "Nom du producteur"
+
+#: View/Countries/view.ctp:38
+msgid "New Producer"
+msgstr "Nouveau Producteur"
+
+#: View/Countries/view.ctp:41
+msgid "Related Regions"
+msgstr "Régions associées"
+
+#: View/Countries/view.ctp:45
+msgid "Region Name"
+msgstr "Nom de la région"
+
+#: View/Countries/view.ctp:62
+msgid "New Region"
+msgstr "Nouvelle région"
+
+#: View/Elements/paginator.ctp:4
+msgid "Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}"
+msgstr "Page {:page} de {:pages} , montrant {:current} enregistrements actuels de {:count} au total, à partir du disque {:start}, se terminant le {:end}"
+
+#: View/Elements/paginator.ctp:10
+msgid "previous"
+msgstr "précédente"
+
+#: View/Elements/paginator.ctp:12
+msgid "next"
+msgstr "prochain"
+
+#: View/Elements/related_wines.ctp:23
+msgid "Related Wines"
+msgstr "Vins connexes"
+
+#: View/Elements/related_wines.ctp:27
+msgid "Wine Name"
+msgstr "Nom du vin"
+
+#: View/Elements/related_wines.ctp:28
+msgid "Vintage"
+msgstr "Vintage"
+
+#: View/Elements/related_wines.ctp:29
+msgid "Price"
+msgstr "Prix"
+
+#: View/Elements/related_wines.ctp:30
+msgid "Rating"
+msgstr "Cote"
+
+#: View/Elements/related_wines.ctp:35
+msgid "Picture"
+msgstr "Image"
+
+#: View/Elements/related_wines.ctp:66
+msgid "New Wine"
+msgstr "Nouveau vin"
+
+#: View/Grapetypes/form.ctp:25
+msgid "Edit Grape type"
+msgstr "Modifier le type de raisin"
+
+#: View/Grapetypes/form.ctp:28
+msgid "Enter the grape type name"
+msgstr "Entrez le nom du type de raisin"
+
+#: View/Grapetypes/index.ctp:22
+msgid "New grape type"
+msgstr "Nouveau type de raisin"
+
+#: View/Grapetypes/index.ctp:24
+#: View/Layouts/default.ctp:91
+msgid "Grape types"
+msgstr "Type de raisin"
+
+#: View/Grapetypes/view.ctp:25
+msgid "Grape Name"
+msgstr "Nom de raisin"
+
+#: View/Layouts/default.ctp:38
+#: View/Layouts/login.ctp:38
+msgid "The wine cellar"
+msgstr "La cave à vin"
+
+#: View/Layouts/default.ctp:68
+msgid "Home"
+msgstr "Accueil"
+
+#: View/Layouts/default.ctp:71
+msgid "Storages"
+msgstr "Stockages"
+
+#: View/Layouts/default.ctp:72
+msgid "Wines"
+msgstr "Vins"
+
+#: View/Layouts/default.ctp:87
+msgid "Producers"
+msgstr "Producteurs"
+
+#: View/Layouts/default.ctp:89
+msgid "Regions"
+msgstr "Régions"
+
+#: View/Layouts/default.ctp:90
+msgid "Wine types"
+msgstr "Type de vin"
+
+#: View/Layouts/default.ctp:92
+msgid "Members"
+msgstr "Utilisateurs"
+
+#: View/Layouts/default.ctp:93
+msgid "Logout"
+msgstr "Déconnexion"
+
+#: View/Members/form.ctp:25
+#, fuzzy
+msgid "Edit Member"
+msgstr "Modifier Cave"
+
+#: View/Members/form.ctp:28
+#, fuzzy
+msgid "Enter the user name"
+msgstr "Entrez le nom du producteur"
+
+#: View/Members/index.ctp:22
+#, fuzzy
+msgid "New Member"
+msgstr "Nouvelle cave"
+
+#: View/Members/index.ctp:39
+msgid "Password"
+msgstr "Mot de passe"
+
+#: View/Members/password_change.ctp:4
+msgid "Password change"
+msgstr "Le changement de mot de passe"
+
+#: View/Members/password_change.ctp:9
+#, fuzzy
+msgid "Enter the new password"
+msgstr "Entrez le nom du vin"
+
+#: View/Members/password_change.ctp:10
+msgid "Enter the password confirmation"
+msgstr "Entrez la confirmation de mot de passe"
+
+#: View/Members/view.ctp:25
+#, fuzzy
+msgid "User Name"
+msgstr "Nom de la Cave"
+
+#: View/Producers/form.ctp:25
+msgid "Edit Producer"
+msgstr "Modifier producteur"
+
+#: View/Producers/form.ctp:28
+msgid "Enter the producer name"
+msgstr "Entrez le nom du producteur"
+
+#: View/Regions/form.ctp:25
+msgid "Edit Region"
+msgstr "Modifier la région"
+
+#: View/Regions/form.ctp:28
+msgid "Enter the region name"
+msgstr "Entrez le nom de la région"
+
+#: View/Storages/form.ctp:25
+msgid "Edit Storage"
+msgstr "Modifier stockage"
+
+#: View/Storages/form.ctp:41
+msgid "List Storages"
+msgstr "Liste stockages"
+
+#: View/Storages/form.ctp:42
+msgid "List Cabinets"
+msgstr "Liste des armoires"
+
+#: View/Storages/form.ctp:44
+msgid "List Wines"
+msgstr "Liste des vins"
+
+#: View/Storages/index.ctp:24
+msgid "1.Draw the cabinet by selecting the cellar and the cabinet in the bottom bar and then click on the \"Cabinet\" button."
+msgstr "1.Dessinez l'armoire en sélectionnant la cave et l'armoire dans la barre du bas et cliquez ensuite sur le \"Cabinet \" bouton."
+
+#: View/Storages/index.ctp:25
+msgid "2.Draw the wine toolbar by selecting country, producer, region, wine type and grape type and then click on the \"Wines\" button."
+msgstr "2.Dessinez la barre d'outils en sélectionnant le pays du vin, producteur, région, type de vin et le type de raisin, puis cliquez sur le \"Vins\" bouton."
+
+#: View/Storages/index.ctp:26
+msgid "3.Add bottles to the cabinet by drag and drop from the wines toolbar."
+msgstr "3.Ajouter bouteilles au armoire par glisser-déposer de la barre des vins."
+
+#: View/Storages/index.ctp:27
+msgid "4.Remove bottles from the cabinet by drag and drop to the recycle bin."
+msgstr "4.Retirez les bouteilles de l'armoire par glisser-déposer dans la corbeille."
+
+#: View/Wines/edit_picture.ctp:25
+#: View/Wines/form.ctp:25
+msgid "Edit Wine"
+msgstr "Modifier le vin"
+
+#: View/Wines/edit_picture.ctp:37
+msgid "Select the image file to upload"
+msgstr "Sélectionnez le fichier image à télécharger"
+
+#: View/Wines/form.ctp:28
+msgid "Enter the wine name"
+msgstr "Entrez le nom du vin"
+
+#: View/Wines/form.ctp:29
+msgid "Enter the vintage year"
+msgstr "Entrez l'année de récolte"
+
+#: View/Wines/form.ctp:30
+msgid "Enter the price"
+msgstr "Entrez le prix"
+
+#: View/Wines/form.ctp:31
+msgid "Define the rating"
+msgstr "Définir la cote"
+
+#: View/Wines/view.ctp:60
+#: View/Winetypes/view.ctp:23
+msgid "Winetype"
+msgstr "Type de vin"
+
+#: View/Wines/view.ctp:65
+msgid "Grapetype"
+msgstr "Type de raisin"
+
+#: View/Wines/view.ctp:84
+#, fuzzy
+msgid "Cabinet code"
+msgstr "Code de armoire"
+
+#: View/Winetypes/form.ctp:25
+msgid "Edit Wine type"
+msgstr "Modifier le type de vin"
+
+#: View/Winetypes/form.ctp:28
+msgid "Enter the wine type name"
+msgstr "Entrez le nom du type de vin"
+
+#: View/Winetypes/index.ctp:22
+msgid "New wine type"
+msgstr "Nouveau type de vin"
+
+#: View/Winetypes/view.ctp:25
+msgid "Wine type Name"
+msgstr "Nom du type de vin"
+
+#~ msgid "Winetypes"
+#~ msgstr "Types de vin"
+
+#~ msgid "Grapetypes"
+#~ msgstr "Types de raisin"
+
+#~ msgid "New Storage"
+#~ msgstr "Nouveau stockage"
+
+#~ msgid "Cabinet Id"
+#~ msgstr "Armoire"
+
+#~ msgid "Producer Id"
+#~ msgstr "Producteur"
+
+#~ msgid "Region Id"
+#~ msgstr "Région"
+
+#~ msgid "Winetype Id"
+#~ msgstr "Type de vin"
+
+#~ msgid "Grapetype Id"
+#~ msgstr "Type de raisin"
+
+#~ msgid "Country Id"
+#~ msgstr "Pays"
