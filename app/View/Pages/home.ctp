@@ -14,4 +14,4 @@
 <br/>
 <address>Luís E. S. Dias</address>
 </div>
-<div id="main-photo"><?php echo $this->Html->image('home-photo.jpg',array(width=>"251",height=>"301",alt=>"wine")); ?></div>	  
+<div id="main-photo"><?php echo $this->Html->image('home-photo.jpg',array('width'=>"251",'height'=>"301",'alt'=>"wine")); ?></div>	  
