@@ -63,12 +63,13 @@
 		<div id="title"><a href="#"><?php echo 'The' ?><br /><span><?php echo 'Wine cellar' ?></span></a></div>
 		<div id="navigation">
 		<ul>
-                    <li><?php echo $this->Html->link(__('Home', true), array('controller' => 'pages', 'action' => 'home')); ?></li>
-                    <li><?php echo $this->Html->link(__('Cellars', true), array('controller' => 'cellars', 'action' => 'index')); ?></li>
-                    <li><?php echo $this->Html->link(__('Cabinets', true), array('controller' => 'cabinets', 'action' => 'index')); ?></li>
-                    <li><?php echo $this->Html->link(__('Storages', true), array('controller' => 'storages', 'action' => 'index')); ?></li>
-                    <li><?php echo $this->Html->link(__('Wines', true), array('controller' => 'wines', 'action' => 'index')); ?></li>
-                    <li><?php echo $this->Html->link(__('Logout', true), array('controller' => 'members', 'action' => 'logout'), array('class' => 'no-divide')); ?></li>
+                    <li><?php echo $this->Html->link(__('Home', true), array('plugin'=>null, 'controller' => 'pages', 'action' => 'home')); ?></li>
+                    <li><?php echo $this->Html->link(__('Cellars', true), array('plugin'=>null, 'controller' => 'cellars', 'action' => 'index')); ?></li>
+                    <li><?php echo $this->Html->link(__('Cabinets', true), array('plugin'=>null, 'controller' => 'cabinets', 'action' => 'index')); ?></li>
+                    <li><?php echo $this->Html->link(__('Storages', true), array('plugin'=>null, 'controller' => 'storages', 'action' => 'index')); ?></li>
+                    <li><?php echo $this->Html->link(__('Wines', true), array('plugin'=>null, 'controller' => 'wines', 'action' => 'index')); ?></li>
+                    <li><?php echo $this->Html->link(__('Reports', true), array('plugin'=>'report_manager', 'controller' => null, 'action' => 'reports')); ?></li>
+                    <li><?php echo $this->Html->link(__('Logout', true), array('plugin'=>null, 'controller' => 'members', 'action' => 'logout'), array('class' => 'no-divide')); ?></li>
                 </ul>
                 </div>
 	</div>
@@ -82,12 +83,12 @@
 		<div class="clear"></div>
 	</div>
     <div id="bottom-navigation">
-            <?php echo $this->Html->link(__('Countries', true), array('controller' => 'countries', 'action' => 'index')); ?> |         
-            <?php echo $this->Html->link(__('Producers', true), array('controller' => 'producers', 'action' => 'index')); ?> |             
-            <?php echo $this->Html->link(__('Regions', true), array('controller' => 'regions', 'action' => 'index')); ?> | 
-            <?php echo $this->Html->link(__('Wine types', true), array('controller' => 'winetypes', 'action' => 'index')); ?> | 
-            <?php echo $this->Html->link(__('Grape types', true), array('controller' => 'grapetypes', 'action' => 'index')); ?> | 
-            <?php echo $this->Html->link(__('Members', true), array('controller' => 'members', 'action' => 'index')); ?>
+            <?php echo $this->Html->link(__('Countries', true), array('plugin'=>null, 'controller' => 'countries', 'action' => 'index')); ?> |         
+            <?php echo $this->Html->link(__('Producers', true), array('plugin'=>null, 'controller' => 'producers', 'action' => 'index')); ?> |             
+            <?php echo $this->Html->link(__('Regions', true), array('plugin'=>null, 'controller' => 'regions', 'action' => 'index')); ?> | 
+            <?php echo $this->Html->link(__('Wine types', true), array('plugin'=>null, 'controller' => 'winetypes', 'action' => 'index')); ?> | 
+            <?php echo $this->Html->link(__('Grape types', true), array('plugin'=>null, 'controller' => 'grapetypes', 'action' => 'index')); ?> | 
+            <?php echo $this->Html->link(__('Members', true), array('plugin'=>null, 'controller' => 'members', 'action' => 'index')); ?>
     </div>
 	<div id="content-bottom"></div>
 </div>
