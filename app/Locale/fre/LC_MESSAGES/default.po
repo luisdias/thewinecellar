@@ -15,11 +15,11 @@ msgstr ""
 
 #: Controller/AppController.php:44
 msgid "Invalid login or password"
-msgstr "Invalid login ou mot de passe"
+msgstr "Login ou mot de passe invalide"
 
 #: Controller/AppController.php:45
 msgid "Without access permission"
-msgstr "Sans autorisation d'accès"
+msgstr "Pas d'autorisation d'accès"
 
 #: Controller/AppController.php:66
 #: Controller/AppController.php:77
@@ -41,7 +41,7 @@ msgstr "a été enregistré"
 
 #: Controller/AppController.php:124
 msgid " could not be saved. Please, try again."
-msgstr "ne pouvait pas être sauvé. S'il vous plaît, essayez de nouveau."
+msgstr "n'a pas pu être sauvegardé. Merci de réessayer."
 
 #: Controller/AppController.php:160
 msgid " deleted"
@@ -49,7 +49,7 @@ msgstr "supprimé"
 
 #: Controller/AppController.php:169
 msgid "There are related records. Record was not deleted."
-msgstr "Il ya des dossiers connexes. Enregistrement n'a pas été supprimé."
+msgstr "Il y a des dossiers connexes. L'enregistrement n'a pas été supprimé."
 
 #: Controller/CabinetsController.php:34
 msgid "Cabinet"
@@ -82,7 +82,7 @@ msgstr "Mot de passe mis à jour avec succès"
 #: Controller/MembersController.php:67
 #, fuzzy
 msgid "Passwords do not match. Please try again"
-msgstr "ne pouvait pas être sauvé. S'il vous plaît, essayez de nouveau."
+msgstr "Mot de passe incorrect. Merci de réessayer."
 
 #: Controller/ProducersController.php:34
 msgid "Producer"
@@ -106,11 +106,11 @@ msgstr "Vin invalide"
 
 #: Controller/WinesController.php:102
 msgid "The wine picture has been saved"
-msgstr "L'image du vin a été enregistré"
+msgstr "L'image du vin a été enregistrée"
 
 #: Controller/WinesController.php:105
 msgid "The wine picture could not be saved. Please, try again."
-msgstr "L'image du vin ne pouvait être sauvé. S'il vous plaît, essayez de nouveau."
+msgstr "L'image du vin n'a pas pu être sauvegardée. Merci de réessayer."
 
 #: Controller/WinesController.php:203
 msgid "No file Selected"
@@ -122,7 +122,7 @@ msgstr "Type de vin"
 
 #: Model/Cabinet.php:50
 msgid "Cabinet code is required"
-msgstr "Code du armoire est nécessaire"
+msgstr "Le code de l'armoire est requis"
 
 #: Model/Cabinet.php:55
 msgid "Between 3 to 30 lines"
@@ -138,20 +138,20 @@ msgstr "Sélectionnez la cave"
 
 #: Model/Cellar.php:36
 msgid "Cellar name is required"
-msgstr "Nom Cave est nécessaire"
+msgstr "Le nom de la cave est requis"
 
 #: Model/Country.php:38
 msgid "Country name is required"
-msgstr "Nom du pays est nécessaire"
+msgstr "Le nom du pays est requis"
 
 #: Model/Grapetype.php:36
 msgid "Grape name is required"
-msgstr "Nom de raisin est nécessaire"
+msgstr "Le nom du raisin est requis"
 
 #: Model/Member.php:34
 #, fuzzy
 msgid "User name is required"
-msgstr "Nom Cave est nécessaire"
+msgstr "Un nom d'utilisateur est requis"
 
 #: Model/Member.php:38
 msgid "User name already in use"
@@ -165,7 +165,7 @@ msgstr "Taille minimale: 5 caractères"
 #: Model/Member.php:47
 #, fuzzy
 msgid "Password is required"
-msgstr "Code du armoire est nécessaire"
+msgstr "Mot de passe requis"
 
 #: Model/Member.php:57
 msgid "Passwords do not match"
@@ -173,15 +173,15 @@ msgstr "Les mots de passe ne correspondent pas"
 
 #: Model/Producer.php:37
 msgid "Producer name is required"
-msgstr "Nom du producteur est nécessaire"
+msgstr "Le nom du producteur est nécessaire"
 
 #: Model/Region.php:37
 msgid "Region name is required"
-msgstr "Nom de la région est nécessaire"
+msgstr "Le nom de la région est nécessaire"
 
 #: Model/Wine.php:41
 msgid "Wine name is required"
-msgstr "Nom du vin est requis"
+msgstr "Le nom du vin est requis"
 
 #: Model/Wine.php:45
 msgid "Select the country"
@@ -205,7 +205,7 @@ msgstr "Sélectionnez le type de raisin"
 
 #: Model/Winetype.php:36
 msgid "Wine type name is required"
-msgstr "Nom du type de vin est requis"
+msgstr "Le type de vin est requis"
 
 #: View/Cabinets/ajax_get_cellar_cabinets.ctp:22
 #: View/Cabinets/form.ctp:31
@@ -214,7 +214,7 @@ msgstr "--- Choisissez ---"
 
 #: View/Cabinets/form.ctp:25
 msgid "Edit Cabinet"
-msgstr "Modifier armoire"
+msgstr "Modifier l'armoire"
 
 #: View/Cabinets/form.ctp:28
 msgid "Enter a code for the cabinet"
@@ -235,7 +235,7 @@ msgstr "Envoyer"
 #: View/Cabinets/index.ctp:22
 #: View/Cellars/view.ctp:93
 msgid "New Cabinet"
-msgstr "Nouveau armoire"
+msgstr "Nouvelle armoire"
 
 #: View/Cabinets/index.ctp:24
 #: View/Layouts/default.ctp:70
@@ -285,12 +285,12 @@ msgstr "Supprimer"
 #: View/Grapetypes/index.ctp:38
 #, php-format
 msgid "Are you sure you want to delete # %s?"
-msgstr "Etes-vous sûr de vouloir supprimer #% s?"
+msgstr "Êtes-vous sûr de vouloir supprimer #% s?"
 
 #: View/Cabinets/view.ctp:25
 #: View/Cellars/view.ctp:72
 msgid "Cabinet Code"
-msgstr "Code de armoire"
+msgstr "Code de l'armoire"
 
 #: View/Cabinets/view.ctp:30
 #: View/Cellars/view.ctp:73
@@ -316,11 +316,11 @@ msgstr "Numéro de la colonne"
 
 #: View/Cabinets/view.ctp:54
 msgid "Wine Id"
-msgstr "Vin"
+msgstr "Identifiant du vin"
 
 #: View/Cellars/form.ctp:25
 msgid "Edit Cellar"
-msgstr "Modifier Cave"
+msgstr "Modifier la cave"
 
 #: View/Cellars/form.ctp:28
 msgid "Choose a name for the winery"
@@ -394,11 +394,11 @@ msgstr "Etat"
 
 #: View/Cellars/view.ctp:68
 msgid "Related Cabinets"
-msgstr "Armoires connexes"
+msgstr "Armoires reliées"
 
 #: View/Countries/form.ctp:25
 msgid "Edit Country"
-msgstr "Modifier pays"
+msgstr "Modifier le pays"
 
 #: View/Countries/form.ctp:29
 msgid "Enter the country code"
@@ -423,7 +423,7 @@ msgstr "Code du pays"
 
 #: View/Countries/view.ctp:17
 msgid "Related Producers"
-msgstr "Les producteurs associés"
+msgstr "Les producteurs reliés"
 
 #: View/Countries/view.ctp:21
 msgid "Producer Name"
@@ -447,7 +447,7 @@ msgstr "Nouvelle région"
 
 #: View/Elements/paginator.ctp:4
 msgid "Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}"
-msgstr "Page {:page} de {:pages} , montrant {:current} enregistrements actuels de {:count} au total, à partir du disque {:start}, se terminant le {:end}"
+msgstr "Page {:page} de {:pages} , montrant {:current} enregistrements actuels de {:count} au total, à partir de l'enregistrement {:start}, se terminant à {:end}"
 
 #: View/Elements/paginator.ctp:10
 msgid "previous"
@@ -459,7 +459,7 @@ msgstr "prochain"
 
 #: View/Elements/related_wines.ctp:23
 msgid "Related Wines"
-msgstr "Vins connexes"
+msgstr "Vins reliés"
 
 #: View/Elements/related_wines.ctp:27
 msgid "Wine Name"
@@ -546,7 +546,7 @@ msgstr "Déconnexion"
 #: View/Members/form.ctp:25
 #, fuzzy
 msgid "Edit Member"
-msgstr "Modifier Cave"
+msgstr "Modifier la cave"
 
 #: View/Members/form.ctp:28
 #, fuzzy
@@ -564,25 +564,25 @@ msgstr "Mot de passe"
 
 #: View/Members/password_change.ctp:4
 msgid "Password change"
-msgstr "Le changement de mot de passe"
+msgstr "Changer le mot de passe"
 
 #: View/Members/password_change.ctp:9
 #, fuzzy
 msgid "Enter the new password"
-msgstr "Entrez le nom du vin"
+msgstr "Entrez un nouveau mot de passe"
 
 #: View/Members/password_change.ctp:10
 msgid "Enter the password confirmation"
-msgstr "Entrez la confirmation de mot de passe"
+msgstr "Confirmez le mot de passe"
 
 #: View/Members/view.ctp:25
 #, fuzzy
 msgid "User Name"
-msgstr "Nom de la Cave"
+msgstr "Nom d'utilisateur"
 
 #: View/Producers/form.ctp:25
 msgid "Edit Producer"
-msgstr "Modifier producteur"
+msgstr "Modifier le producteur"
 
 #: View/Producers/form.ctp:28
 msgid "Enter the producer name"
@@ -614,19 +614,19 @@ msgstr "Liste des vins"
 
 #: View/Storages/index.ctp:24
 msgid "1.Draw the cabinet by selecting the cellar and the cabinet in the bottom bar and then click on the \"Cabinet\" button."
-msgstr "1.Dessinez l'armoire en sélectionnant la cave et l'armoire dans la barre du bas et cliquez ensuite sur le \"Cabinet \" bouton."
+msgstr "1.Modifiez l'armoire en sélectionnant la cave et l'armoire dans la barre du bas et cliquez ensuite sur le bouton \"Armoire \"."
 
 #: View/Storages/index.ctp:25
 msgid "2.Draw the wine toolbar by selecting country, producer, region, wine type and grape type and then click on the \"Wines\" button."
-msgstr "2.Dessinez la barre d'outils en sélectionnant le pays du vin, producteur, région, type de vin et le type de raisin, puis cliquez sur le \"Vins\" bouton."
+msgstr "2.Modifiez la barre d'outils en sélectionnant le pays du vin, le producteur, la région, le type de vin et le type de raisin, puis cliquez sur le bouton \"Vins\"."
 
 #: View/Storages/index.ctp:26
 msgid "3.Add bottles to the cabinet by drag and drop from the wines toolbar."
-msgstr "3.Ajouter bouteilles au armoire par glisser-déposer de la barre des vins."
+msgstr "3.Ajoutez des bouteilles à l'armoire par glisser-déposer dans la barre des vins."
 
 #: View/Storages/index.ctp:27
 msgid "4.Remove bottles from the cabinet by drag and drop to the recycle bin."
-msgstr "4.Retirez les bouteilles de l'armoire par glisser-déposer dans la corbeille."
+msgstr "4.Retirez des bouteilles de l'armoire par glisser-déposer dans la corbeille."
 
 #: View/Wines/edit_picture.ctp:25
 #: View/Wines/form.ctp:25
@@ -635,7 +635,7 @@ msgstr "Modifier le vin"
 
 #: View/Wines/edit_picture.ctp:37
 msgid "Select the image file to upload"
-msgstr "Sélectionnez le fichier image à télécharger"
+msgstr "Sélectionnez le fichier image à envoyer"
 
 #: View/Wines/form.ctp:28
 msgid "Enter the wine name"
@@ -665,7 +665,7 @@ msgstr "Type de raisin"
 #: View/Wines/view.ctp:84
 #, fuzzy
 msgid "Cabinet code"
-msgstr "Code de armoire"
+msgstr "Code de l'armoire"
 
 #: View/Winetypes/form.ctp:25
 msgid "Edit Wine type"
@@ -673,7 +673,7 @@ msgstr "Modifier le type de vin"
 
 #: View/Winetypes/form.ctp:28
 msgid "Enter the wine type name"
-msgstr "Entrez le nom du type de vin"
+msgstr "Entrez le type de vin"
 
 #: View/Winetypes/index.ctp:22
 msgid "New wine type"
