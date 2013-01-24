@@ -66,7 +66,7 @@ class TextHelper extends AppHelper {
  * @throws CakeException when the engine class could not be found.
  */
 	public function __construct(View $View, $settings = array()) {
-		$settings = Set::merge(array('engine' => 'String'), $settings);
+		$settings = Hash::merge(array('engine' => 'String'), $settings);
 		parent::__construct($View, $settings);
 		list($plugin, $engineClass) = pluginSplit($settings['engine'], true);
 		App::uses($engineClass, $plugin . 'Utility');
@@ -101,8 +101,9 @@ class TextHelper extends AppHelper {
 		$this->_placeholders = array();
 		$options += array('escape' => true);
 
+		$pattern = '#(?<!href="|src="|">)((?:https?|ftp|nntp)://[a-z0-9.\-:]+(?:/[^\s]*)?)#i';
 		$text = preg_replace_callback(
-			'#(?<!href="|src="|">)((?:https?|ftp|nntp)://[^\s<>()]+)#i',
+			$pattern,
 			array(&$this, '_insertPlaceHolder'),
 			$text
 		);
@@ -139,12 +140,12 @@ class TextHelper extends AppHelper {
  */
 	protected function _linkUrls($text, $htmlOptions) {
 		$replace = array();
-		foreach ($this->_placeholders as $md5 => $url) {
+		foreach ($this->_placeholders as $hash => $url) {
 			$link = $url;
 			if (!preg_match('#^[a-z]+\://#', $url)) {
 				$url = 'http://' . $url;
 			}
-			$replace[$md5] = $this->Html->link($link, $url, $htmlOptions);
+			$replace[$hash] = $this->Html->link($link, $url, $htmlOptions);
 		}
 		return strtr($text, $replace);
 	}
@@ -159,8 +160,8 @@ class TextHelper extends AppHelper {
  */
 	protected function _linkEmails($text, $options) {
 		$replace = array();
-		foreach ($this->_placeholders as $md5 => $url) {
-			$replace[$md5] = $this->Html->link($url, 'mailto:' . $url, $options);
+		foreach ($this->_placeholders as $hash => $url) {
+			$replace[$hash] = $this->Html->link($url, 'mailto:' . $url, $options);
 		}
 		return strtr($text, $replace);
 	}

@@ -21,8 +21,8 @@ App::uses('Component', 'Controller');
 App::uses('CakeSession', 'Model/Datasource');
 
 /**
- * The CakePHP SessionComponent provides a way to persist client data between 
- * page requests. It acts as a wrapper for the `$_SESSION` as well as providing 
+ * The CakePHP SessionComponent provides a way to persist client data between
+ * page requests. It acts as a wrapper for the `$_SESSION` as well as providing
  * convenience methods for several `$_SESSION` related functions.
  *
  * @package       Cake.Controller.Component
@@ -162,15 +162,19 @@ class SessionComponent extends Component {
 	}
 
 /**
- * Returns Session id
+ * Get/Set the session id.
  *
- * If $id is passed in a beforeFilter, the Session will be started
- * with the specified id
+ * When fetching the session id, the session will be started
+ * if it has not already been started.  When setting the session id,
+ * the session will not be started.
  *
- * @param string $id
- * @return string
+ * @param string $id Id to use (optional)
+ * @return string The current session id.
  */
 	public function id($id = null) {
+		if (empty($id)) {
+			CakeSession::start();
+		}
 		return CakeSession::id($id);
 	}
 

@@ -4,7 +4,7 @@
  *
  * PHP 5
  *
- * CakePHP(tm) Tests <http://book.cakephp.org/view/1196/Testing>
+ * CakePHP(tm) Tests <http://book.cakephp.org/2.0/en/development/testing.html>
  * Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
  *
  * Licensed under The MIT License
@@ -201,6 +201,9 @@ class CakeBaseReporter extends PHPUnit_TextUI_ResultPrinter {
  */
 	public function endTest(PHPUnit_Framework_Test $test, $time) {
 		$this->numAssertions += $test->getNumAssertions();
+		if ($test->hasFailed()) {
+			return;
+		}
 		$this->paintPass($test, $time);
 	}
 

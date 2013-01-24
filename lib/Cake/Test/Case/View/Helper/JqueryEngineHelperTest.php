@@ -4,7 +4,7 @@
  *
  * PHP 5
  *
- * CakePHP(tm) Tests <http://book.cakephp.org/view/1196/Testing>
+ * CakePHP(tm) Tests <http://book.cakephp.org/2.0/en/development/testing.html>
  * Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
  *
  * Licensed under The MIT License
@@ -212,6 +212,18 @@ class JqueryEngineHelperTest extends CakeTestCase {
 			'data' => '$("#someId").serialize()',
 		));
 		$expected = '$.ajax({beforeSend:function (XMLHttpRequest) {doBefore}, data:$("#someId").serialize(), success:function (data, textStatus) {doFoo}, type:"post", url:"\\/people\\/edit\\/1"});';
+		$this->assertEquals($expected, $result);
+	}
+
+/**
+ * Test that querystring arguments are not double escaped.
+ *
+ * @return void
+ */
+	public function testRequestWithQueryStringArguments() {
+		$url = '/users/search/sort:User.name/direction:desc?nome=&cpm=&audience=public';
+		$result = $this->Jquery->request($url);
+		$expected = '$.ajax({url:"\\/users\\/search\\/sort:User.name\\/direction:desc?nome=&cpm=&audience=public"});';
 		$this->assertEquals($expected, $result);
 	}
 

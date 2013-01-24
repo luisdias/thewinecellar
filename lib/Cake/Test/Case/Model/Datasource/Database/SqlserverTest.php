@@ -543,6 +543,16 @@ class SqlserverTest extends CakeTestCase {
 		$result = $this->db->buildColumn($column);
 		$expected = '[body] nvarchar(MAX)';
 		$this->assertEquals($expected, $result);
+
+		$column = array(
+			'name' => 'checked',
+			'type' => 'boolean',
+			'length' => 10,
+			'default' => '1'
+		);
+		$result = $this->db->buildColumn($column);
+		$expected = "[checked] bit DEFAULT '1'";
+		$this->assertEquals($expected, $result);
 	}
 
 /**
@@ -564,7 +574,7 @@ class SqlserverTest extends CakeTestCase {
 
 		$indexes = array('client_id' => array('column' => 'client_id'));
 		$result = $this->db->buildIndex($indexes, 'items');
-		$this->assertEquals(array(), $result);
+		$this->assertSame(array(), $result);
 
 		$indexes = array('client_id' => array('column' => array('client_id', 'period_id'), 'unique' => 1));
 		$result = $this->db->buildIndex($indexes, 'items');

@@ -15,8 +15,7 @@
  * @since         CakePHP(tm) v 2.0
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
-
-App::uses('Set', 'Utility');
+App::uses('Hash', 'Utility');
 
 /**
  * A class that helps wrap Request information and particulars about a single request.
@@ -39,6 +38,8 @@ class CakeRequest implements ArrayAccess {
 		'plugin' => null,
 		'controller' => null,
 		'action' => null,
+		'named' => array(),
+		'pass' => array(),
 	);
 
 /**
@@ -153,20 +154,29 @@ class CakeRequest implements ArrayAccess {
  * into a single array. Variables prefixed with `data` will overwrite those without.
  *
  * If you have mixed POST values be careful not to make any top level keys numeric
- * containing arrays. Set::merge() is used to merge data, and it has possibly
+ * containing arrays. Hash::merge() is used to merge data, and it has possibly
  * unexpected behavior in this situation.
  *
  * @return void
  */
 	protected function _processPost() {
-		$this->data = $_POST;
+		if ($_POST) {
+			$this->data = $_POST;
+		} elseif (
+			($this->is('put') || $this->is('delete')) &&
+			strpos(env('CONTENT_TYPE'), 'application/x-www-form-urlencoded') === 0
+		) {
+				$data = $this->_readInput();
+				parse_str($data, $this->data);
+		}
 		if (ini_get('magic_quotes_gpc') === '1') {
 			$this->data = stripslashes_deep($this->data);
 		}
 		if (env('HTTP_X_HTTP_METHOD_OVERRIDE')) {
 			$this->data['_method'] = env('HTTP_X_HTTP_METHOD_OVERRIDE');
 		}
-		if (isset($this->data['_method'])) {
+		$isArray = is_array($this->data);
+		if ($isArray && isset($this->data['_method'])) {
 			if (!empty($_SERVER)) {
 				$_SERVER['REQUEST_METHOD'] = $this->data['_method'];
 			} else {
@@ -174,14 +184,13 @@ class CakeRequest implements ArrayAccess {
 			}
 			unset($this->data['_method']);
 		}
-
-		if (isset($this->data['data'])) {
+		if ($isArray && isset($this->data['data'])) {
 			$data = $this->data['data'];
 			if (count($this->data) <= 1) {
 				$this->data = $data;
 			} else {
 				unset($this->data['data']);
-				$this->data = Set::merge($this->data, $data);
+				$this->data = Hash::merge($this->data, $data);
 			}
 		}
 	}
@@ -220,8 +229,10 @@ class CakeRequest implements ArrayAccess {
 	protected function _url() {
 		if (!empty($_SERVER['PATH_INFO'])) {
 			return $_SERVER['PATH_INFO'];
-		} elseif (isset($_SERVER['REQUEST_URI'])) {
+		} elseif (isset($_SERVER['REQUEST_URI']) && strpos($_SERVER['REQUEST_URI'], '://') === false) {
 			$uri = $_SERVER['REQUEST_URI'];
+		} elseif (isset($_SERVER['REQUEST_URI'])) {
+			$uri = substr($_SERVER['REQUEST_URI'], strlen(FULL_BASE_URL));
 		} elseif (isset($_SERVER['PHP_SELF']) && isset($_SERVER['SCRIPT_NAME'])) {
 			$uri = str_replace($_SERVER['SCRIPT_NAME'], '', $_SERVER['PHP_SELF']);
 		} elseif (isset($_SERVER['HTTP_X_REWRITE_URL'])) {
@@ -310,7 +321,7 @@ class CakeRequest implements ArrayAccess {
 	protected function _processFiles() {
 		if (isset($_FILES) && is_array($_FILES)) {
 			foreach ($_FILES as $name => $data) {
-				if ($name != 'data') {
+				if ($name !== 'data') {
 					$this->params['form'][$name] = $data;
 				}
 			}
@@ -318,21 +329,31 @@ class CakeRequest implements ArrayAccess {
 
 		if (isset($_FILES['data'])) {
 			foreach ($_FILES['data'] as $key => $data) {
-				foreach ($data as $model => $fields) {
-					if (is_array($fields)) {
-						foreach ($fields as $field => $value) {
-							if (is_array($value)) {
-								foreach ($value as $k => $v) {
-									$this->data[$model][$field][$k][$key] = $v;
-								}
-							} else {
-								$this->data[$model][$field][$key] = $value;
-							}
-						}
-					} else {
-						$this->data[$model][$key] = $fields;
-					}
-				}
+				$this->_processFileData('', $data, $key);
+			}
+		}
+	}
+
+/**
+ * Recursively walks the FILES array restructuring the data
+ * into something sane and useable.
+ *
+ * @param string $path The dot separated path to insert $data into.
+ * @param array $data The data to traverse/insert.
+ * @param string $field The terminal field name, which is the top level key in $_FILES.
+ * @return void
+ */
+	protected function _processFileData($path, $data, $field) {
+		foreach ($data as $key => $fields) {
+			$newPath = $key;
+			if (!empty($path)) {
+				$newPath = $path . '.' . $key;
+			}
+			if (is_array($fields)) {
+				$this->_processFileData($newPath, $fields, $field);
+			} else {
+				$newPath .= '.' . $field;
+				$this->data = Hash::insert($this->data, $newPath, $fields);
 			}
 		}
 	}
@@ -519,7 +540,7 @@ class CakeRequest implements ArrayAccess {
 	public function addDetector($name, $options) {
 		$name = strtolower($name);
 		if (isset($this->_detectors[$name]) && isset($options['options'])) {
-			$options = Set::merge($this->_detectors[$name], $options);
+			$options = Hash::merge($this->_detectors[$name], $options);
 		}
 		$this->_detectors[$name] = $options;
 	}
@@ -603,7 +624,7 @@ class CakeRequest implements ArrayAccess {
 /**
  * Get the host that the request was handled on.
  *
- * @return void
+ * @return string
  */
 	public function host() {
 		return env('HTTP_HOST');
@@ -644,7 +665,7 @@ class CakeRequest implements ArrayAccess {
  *
  * #### Check for a single type:
  *
- * `$this->request->accepts('json');`
+ * `$this->request->accepts('application/json');`
  *
  * This method will order the returned content types by the preference values indicated
  * by the client.
@@ -656,7 +677,7 @@ class CakeRequest implements ArrayAccess {
 	public function accepts($type = null) {
 		$raw = $this->parseAccept();
 		$accept = array();
-		foreach ($raw as $value => $types) {
+		foreach ($raw as $types) {
 			$accept = array_merge($accept, $types);
 		}
 		if ($type === null) {
@@ -748,10 +769,10 @@ class CakeRequest implements ArrayAccess {
 	public function data($name) {
 		$args = func_get_args();
 		if (count($args) == 2) {
-			$this->data = Set::insert($this->data, $name, $args[1]);
+			$this->data = Hash::insert($this->data, $name, $args[1]);
 			return $this;
 		}
-		return Set::classicExtract($this->data, $name);
+		return Hash::get($this->data, $name);
 	}
 
 /**

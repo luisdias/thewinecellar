@@ -21,6 +21,28 @@ App::uses('Dispatcher', 'Routing');
 App::uses('Xml', 'Utility');
 App::uses('CakeRequest', 'Network');
 
+class TestCakeRequest extends CakeRequest {
+
+	public function reConstruct($url = 'some/path', $parseEnvironment = true) {
+		$this->_base();
+		if (empty($url)) {
+			$url = $this->_url();
+		}
+		if ($url[0] == '/') {
+			$url = substr($url, 1);
+		}
+		$this->url = $url;
+
+		if ($parseEnvironment) {
+			$this->_processPost();
+			$this->_processGet();
+			$this->_processFiles();
+		}
+		$this->here = $this->base . '/' . $this->url;
+	}
+
+}
+
 class CakeRequestTest extends CakeTestCase {
 
 /**
@@ -30,10 +52,6 @@ class CakeRequestTest extends CakeTestCase {
  */
 	public function setUp() {
 		parent::setUp();
-		$this->_server = $_SERVER;
-		$this->_get = $_GET;
-		$this->_post = $_POST;
-		$this->_files = $_FILES;
 		$this->_app = Configure::read('App');
 		$this->_case = null;
 		if (isset($_GET['case'])) {
@@ -45,16 +63,12 @@ class CakeRequestTest extends CakeTestCase {
 	}
 
 /**
- * tearDown-
+ * tearDown
  *
  * @return void
  */
 	public function tearDown() {
 		parent::tearDown();
-		$_SERVER = $this->_server;
-		$_GET = $this->_get;
-		$_POST = $this->_post;
-		$_FILES = $this->_files;
 		if (!empty($this->_case)) {
 			$_GET['case'] = $this->_case;
 		}
@@ -213,98 +227,201 @@ class CakeRequestTest extends CakeTestCase {
 	}
 
 /**
+ * test parsing PUT data into the object.
+ *
+ * @return void
+ */
+	public function testPutParsing() {
+		$_SERVER['REQUEST_METHOD'] = 'PUT';
+		$_SERVER['CONTENT_TYPE'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+
+		$data = array('data' => array(
+			'Article' => array('title')
+		));
+
+		$request = $this->getMock('TestCakeRequest', array('_readInput'));
+		$request->expects($this->at(0))->method('_readInput')
+			->will($this->returnValue('data[Article][]=title'));
+		$request->reConstruct();
+		$this->assertEquals($data['data'], $request->data);
+
+		$data = array('one' => 1, 'two' => 'three');
+		$request = $this->getMock('TestCakeRequest', array('_readInput'));
+		$request->expects($this->at(0))->method('_readInput')
+			->will($this->returnValue('one=1&two=three'));
+		$request->reConstruct();
+		$this->assertEquals($data, $request->data);
+
+		$data = array(
+			'data' => array(
+				'Article' => array('title' => 'Testing'),
+			),
+			'action' => 'update'
+		);
+		$request = $this->getMock('TestCakeRequest', array('_readInput'));
+		$request->expects($this->at(0))->method('_readInput')
+			->will($this->returnValue('data[Article][title]=Testing&action=update'));
+		$request->reConstruct();
+		$expected = array(
+			'Article' => array('title' => 'Testing'),
+			'action' => 'update'
+		);
+		$this->assertEquals($expected, $request->data);
+
+		$_SERVER['REQUEST_METHOD'] = 'DELETE';
+		$data = array('data' => array(
+			'Article' => array('title'),
+			'Tag' => array('Tag' => array(1, 2))
+		));
+		$request = $this->getMock('TestCakeRequest', array('_readInput'));
+		$request->expects($this->at(0))->method('_readInput')
+			->will($this->returnValue('data[Article][]=title&Tag[Tag][]=1&Tag[Tag][]=2'));
+		$request->reConstruct();
+		$this->assertEquals($data['data'], $request->data);
+
+		$data = array('data' => array(
+			'Article' => array('title' => 'some title'),
+			'Tag' => array('Tag' => array(1, 2))
+		));
+		$request = $this->getMock('TestCakeRequest', array('_readInput'));
+		$request->expects($this->at(0))->method('_readInput')
+			->will($this->returnValue('data[Article][title]=some%20title&Tag[Tag][]=1&Tag[Tag][]=2'));
+		$request->reConstruct();
+		$this->assertEquals($data['data'], $request->data);
+
+		$data = array(
+			'a' => array(1, 2),
+			'b' => array(1, 2)
+		);
+		$request = $this->getMock('TestCakeRequest', array('_readInput'));
+		$request->expects($this->at(0))->method('_readInput')
+			->will($this->returnValue('a[]=1&a[]=2&b[]=1&b[]=2'));
+		$request->reConstruct();
+		$this->assertEquals($data, $request->data);
+	}
+
+/**
+ * test parsing json PUT data into the object.
+ *
+ * @return void
+ */
+	public function testPutParsingJSON() {
+		$_SERVER['REQUEST_METHOD'] = 'PUT';
+		$_SERVER['CONTENT_TYPE'] = 'application/json';
+
+		$request = $this->getMock('TestCakeRequest', array('_readInput'));
+		$request->expects($this->at(0))->method('_readInput')
+			->will($this->returnValue('{"Article":["title"]}'));
+		$request->reConstruct();
+		$result = $request->input('json_decode', true);
+		$this->assertEquals(array('title'), $result['Article']);
+	}
+
+/**
  * test parsing of FILES array
  *
  * @return void
  */
-	public function testFILESParsing() {
-		$_FILES = array('data' => array('name' => array(
-			'File' => array(
-					array('data' => 'cake_sqlserver_patch.patch'),
-					array('data' => 'controller.diff'),
-					array('data' => ''),
-					array('data' => ''),
+	public function testFilesParsing() {
+		$_FILES = array(
+			'data' => array(
+				'name' => array(
+					'File' => array(
+							array('data' => 'cake_sqlserver_patch.patch'),
+							array('data' => 'controller.diff'),
+							array('data' => ''),
+							array('data' => ''),
+						),
+						'Post' => array('attachment' => 'jquery-1.2.1.js'),
+					),
+				'type' => array(
+					'File' => array(
+						array('data' => ''),
+						array('data' => ''),
+						array('data' => ''),
+						array('data' => ''),
+					),
+					'Post' => array('attachment' => 'application/x-javascript'),
 				),
-				'Post' => array('attachment' => 'jquery-1.2.1.js'),
-			),
-			'type' => array(
-				'File' => array(
-					array('data' => ''),
-					array('data' => ''),
-					array('data' => ''),
-					array('data' => ''),
+				'tmp_name' => array(
+					'File' => array(
+						array('data' => '/private/var/tmp/phpy05Ywj'),
+						array('data' => '/private/var/tmp/php7MBztY'),
+						array('data' => ''),
+						array('data' => ''),
+					),
+					'Post' => array('attachment' => '/private/var/tmp/phpEwlrIo'),
 				),
-				'Post' => array('attachment' => 'application/x-javascript'),
-			),
-			'tmp_name' => array(
-				'File' => array(
-					array('data' => '/private/var/tmp/phpy05Ywj'),
-					array('data' => '/private/var/tmp/php7MBztY'),
-					array('data' => ''),
-					array('data' => ''),
+				'error' => array(
+					'File' => array(
+						array('data' => 0),
+						array('data' => 0),
+						array('data' => 4),
+						array('data' => 4)
+					),
+					'Post' => array('attachment' => 0)
 				),
-				'Post' => array('attachment' => '/private/var/tmp/phpEwlrIo'),
-			),
-			'error' => array(
-				'File' => array(
-					array('data' => 0),
-					array('data' => 0),
-					array('data' => 4),
-					array('data' => 4)
+				'size' => array(
+					'File' => array(
+						array('data' => 6271),
+						array('data' => 350),
+						array('data' => 0),
+						array('data' => 0),
+					),
+					'Post' => array('attachment' => 80469)
 				),
-				'Post' => array('attachment' => 0)
-			),
-			'size' => array(
-				'File' => array(
-					array('data' => 6271),
-					array('data' => 350),
-					array('data' => 0),
-					array('data' => 0),
-				),
-				'Post' => array('attachment' => 80469)
-			),
-		));
+			)
+		);
 
 		$request = new CakeRequest('some/path');
 		$expected = array(
 			'File' => array(
-				array('data' => array(
-					'name' => 'cake_sqlserver_patch.patch',
-					'type' => '',
-					'tmp_name' => '/private/var/tmp/phpy05Ywj',
-					'error' => 0,
-					'size' => 6271,
-				)),
 				array(
 					'data' => array(
-					'name' => 'controller.diff',
-					'type' => '',
-					'tmp_name' => '/private/var/tmp/php7MBztY',
-					'error' => 0,
-					'size' => 350,
-				)),
-				array('data' => array(
-					'name' => '',
-					'type' => '',
-					'tmp_name' => '',
-					'error' => 4,
-					'size' => 0,
-				)),
-				array('data' => array(
-					'name' => '',
-					'type' => '',
-					'tmp_name' => '',
-					'error' => 4,
-					'size' => 0,
-				)),
+						'name' => 'cake_sqlserver_patch.patch',
+						'type' => '',
+						'tmp_name' => '/private/var/tmp/phpy05Ywj',
+						'error' => 0,
+						'size' => 6271,
+					)
+				),
+				array(
+					'data' => array(
+						'name' => 'controller.diff',
+						'type' => '',
+						'tmp_name' => '/private/var/tmp/php7MBztY',
+						'error' => 0,
+						'size' => 350,
+					)
+				),
+				array(
+					'data' => array(
+						'name' => '',
+						'type' => '',
+						'tmp_name' => '',
+						'error' => 4,
+						'size' => 0,
+					)
+				),
+				array(
+					'data' => array(
+						'name' => '',
+						'type' => '',
+						'tmp_name' => '',
+						'error' => 4,
+						'size' => 0,
+					)
+				),
 			),
-			'Post' => array('attachment' => array(
-				'name' => 'jquery-1.2.1.js',
-				'type' => 'application/x-javascript',
-				'tmp_name' => '/private/var/tmp/phpEwlrIo',
-				'error' => 0,
-				'size' => 80469,
-			))
+			'Post' => array(
+				'attachment' => array(
+					'name' => 'jquery-1.2.1.js',
+					'type' => 'application/x-javascript',
+					'tmp_name' => '/private/var/tmp/phpEwlrIo',
+					'error' => 0,
+					'size' => 80469,
+				)
+			)
 		);
 		$this->assertEquals($expected, $request->data);
 
@@ -343,12 +460,12 @@ class CakeRequestTest extends CakeTestCase {
 						1 => array(
 							'birth_cert' => '/private/var/tmp/phpbsUWfH',
 							'passport' => '/private/var/tmp/php7f5zLt',
- 							'drivers_license' => '/private/var/tmp/phpMXpZgT',
+							'drivers_license' => '/private/var/tmp/phpMXpZgT',
 						),
 						2 => array(
 							'birth_cert' => '/private/var/tmp/php5kHZt0',
- 							'passport' => '/private/var/tmp/phpnYkOuM',
- 							'drivers_license' => '/private/var/tmp/php9Rq0P3',
+							'passport' => '/private/var/tmp/phpnYkOuM',
+							'drivers_license' => '/private/var/tmp/php9Rq0P3',
 						)
 					)
 				),
@@ -357,12 +474,12 @@ class CakeRequestTest extends CakeTestCase {
 						1 => array(
 							'birth_cert' => 0,
 							'passport' => 0,
- 							'drivers_license' => 0,
+							'drivers_license' => 0,
 						),
 						2 => array(
 							'birth_cert' => 0,
- 							'passport' => 0,
- 							'drivers_license' => 0,
+							'passport' => 0,
+							'drivers_license' => 0,
 						)
 					)
 				),
@@ -371,12 +488,12 @@ class CakeRequestTest extends CakeTestCase {
 						1 => array(
 							'birth_cert' => 123,
 							'passport' => 458,
- 							'drivers_license' => 875,
+							'drivers_license' => 875,
 						),
 						2 => array(
 							'birth_cert' => 876,
- 							'passport' => 976,
- 							'drivers_license' => 9783,
+							'passport' => 976,
+							'drivers_license' => 9783,
 						)
 					)
 				)
@@ -469,6 +586,24 @@ class CakeRequestTest extends CakeTestCase {
 		);
 		$request = new CakeRequest('some/path');
 		$this->assertEquals($request->params['form'], $_FILES);
+	}
+
+/**
+ * Test that files in the 0th index work.
+ */
+	public function testFilesZeroithIndex() {
+		$_FILES = array(
+			0 => array(
+				'name' => 'cake_sqlserver_patch.patch',
+				'type' => 'text/plain',
+				'tmp_name' => '/private/var/tmp/phpy05Ywj',
+				'error' => 0,
+				'size' => 6271,
+			),
+		);
+
+		$request = new CakeRequest('some/path');
+		$this->assertEquals($_FILES, $request->params['form']);
 	}
 
 /**
@@ -802,6 +937,13 @@ class CakeRequestTest extends CakeTestCase {
 
 		$_SERVER['TEST_VAR'] = 'foo';
 		$this->assertTrue($request->is('compareCamelCase'), 'Value match failed.');
+		$this->assertTrue($request->is('comparecamelcase'), 'detectors should be case insensitive');
+		$this->assertTrue($request->is('COMPARECAMELCASE'), 'detectors should be case insensitive');
+
+		$_SERVER['TEST_VAR'] = 'not foo';
+		$this->assertFalse($request->is('compareCamelCase'), 'Value match failed.');
+		$this->assertFalse($request->is('comparecamelcase'), 'detectors should be case insensitive');
+		$this->assertFalse($request->is('COMPARECAMELCASE'), 'detectors should be case insensitive');
 
 		$request->addDetector('banana', array('env' => 'TEST_VAR', 'pattern' => '/^ban.*$/'));
 		$_SERVER['TEST_VAR'] = 'banana';
@@ -921,6 +1063,22 @@ class CakeRequestTest extends CakeTestCase {
 			'1.0' => array('application/xml', 'image/png'),
 			'0.8' => array('text/html'),
 			'0.7' => array('application/json'),
+		);
+		$this->assertEquals($expected, $result);
+	}
+
+/**
+ * Test parsing accept with a confusing accept value.
+ *
+ * @return void
+ */
+	public function testParseAcceptNoQValues() {
+		$_SERVER['HTTP_ACCEPT'] = 'application/json, text/plain, */*';
+
+		$request = new CakeRequest('/', false);
+		$result = $request->parseAccept();
+		$expected = array(
+			'1.0' => array('application/json', 'text/plain', '*/*'),
 		);
 		$this->assertEquals($expected, $result);
 	}
@@ -1490,6 +1648,30 @@ class CakeRequestTest extends CakeTestCase {
 				),
 			),
 			array(
+				'Apache - w/rewrite, document root set above top level cake dir, request root, absolute REQUEST_URI',
+				array(
+					'App' => array(
+						'base' => false,
+						'baseUrl' => false,
+						'dir' => 'app',
+						'webroot' => 'webroot'
+					),
+					'SERVER' => array(
+						'SERVER_NAME' => 'localhost',
+						'DOCUMENT_ROOT' => '/Library/WebServer/Documents',
+						'SCRIPT_FILENAME' => '/Library/WebServer/Documents/site/index.php',
+						'REQUEST_URI' => FULL_BASE_URL . '/site/posts/index',
+						'SCRIPT_NAME' => '/site/app/webroot/index.php',
+						'PHP_SELF' => '/site/app/webroot/index.php',
+					),
+				),
+				array(
+					'url' => 'posts/index',
+					'base' => '/site',
+					'webroot' => '/site/',
+				),
+			),
+			array(
 				'Nginx - w/rewrite, document root set to webroot, request root, no PATH_INFO',
 				array(
 					'App' => array(
@@ -1528,7 +1710,7 @@ class CakeRequestTest extends CakeTestCase {
  */
 	public function testEnvironmentDetection($name, $env, $expected) {
 		$_GET = array();
-		$this->__loadEnvironment($env);
+		$this->_loadEnvironment($env);
 
 		$request = new CakeRequest();
 		$this->assertEquals($expected['url'], $request->url, "url error");
@@ -1728,10 +1910,10 @@ XML;
 /**
  * loadEnvironment method
  *
- * @param mixed $env
+ * @param array $env
  * @return void
  */
-	protected function __loadEnvironment($env) {
+	protected function _loadEnvironment($env) {
 		if (isset($env['App'])) {
 			Configure::write('App', $env['App']);
 		}
