@@ -57,6 +57,7 @@ Password: admin
 ## Notes:  
 
 Web Template designed by Flipside Digital  
+http://www.flipsidedigital.net  
 
 The Wine Cellar Application uses the following jQuery Plugins:  
 
@@ -75,4 +76,4 @@ http://plugins.jquery.com/project/Star_Rating_widget
 ## Author  
 Luis E. S. Dias  
 Contact: smartbyte.systems@gmail.com  
-Copyright (C) 2012-2013  Luis E. S. Dias
+Copyright (C) 2012-2013
