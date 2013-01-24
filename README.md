@@ -1,5 +1,4 @@
 # The Wine Cellar  
-# Copyright (C) 2012-2013  Luis E. S. Dias
 ## Wine Cellar management software  
 
 **Changelog for version 0.5**  
@@ -75,4 +74,5 @@ http://plugins.jquery.com/project/Star_Rating_widget
 
 ## Author  
 Luis E. S. Dias  
-Contact: smartbyte.systems@gmail.com
+Contact: smartbyte.systems@gmail.com  
+Copyright (C) 2012-2013  Luis E. S. Dias
