@@ -94,7 +94,6 @@ table thead td {
 #repoManLeftCol {
     float: left;
     width: 45%;
-    clear: left;
 }
 
 #repoManMiddleCol {

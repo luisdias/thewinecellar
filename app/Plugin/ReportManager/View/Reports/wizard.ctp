@@ -24,6 +24,8 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ?>
 <?php echo $this->Html->css('/ReportManager/css/report_manager'); ?>
 <?php echo $this->Html->css('/ReportManager/css/smart_wizard'); ?>
+<?php echo $this->Html->script(array('https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js')); ?>
+<?php echo $this->Html->script(array('https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js')); ?>
 <?php echo $this->Html->script(array('/ReportManager/js/jquery.smartWizard-2.0.js','/ReportManager/js/default.js')); ?>
 <?php echo $this->Form->create('Report',array('target'=>'blank'));?>
 <div id="wizard" class="swMain">
@@ -91,7 +93,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
                 'modelSchema'=>$currentModelSchema));
         }
         echo $this->Element('fields_dnd_table_close',array('plugin'=>'ReportManager'));
-        if ( $oneToManyOption != '' ) {
+        if ( $oneToManyOption != null ) {
             echo $this->Element('fields_dnd_table_header',array(
                 'plugin'=>'ReportManager',
                 'title'=>$oneToManyOption,
