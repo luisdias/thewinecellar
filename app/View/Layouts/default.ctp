@@ -54,6 +54,9 @@
 
         echo $scripts_for_layout;
 ?>
+<script type="text/javascript">
+    baseHref = "<?php echo Router::url('/',true); ?>";
+</script>
 </head>
 
 <body id="home">
