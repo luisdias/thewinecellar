@@ -62,7 +62,7 @@ $(function() {
     $('#CabinetCellarId').change(function(){         
         $.ajax({
         type: "POST",
-        url: baseHref+'/cabinets/ajaxGetCellarCabinets',
+        url: baseHref+'cabinets/ajaxGetCellarCabinets',
         data: "cellar_id=" + $('#CabinetCellarId').val(),
         success: function(cabinets){
             $('#cabinets-select').html(cabinets);
@@ -73,7 +73,7 @@ $(function() {
     $('#WineCountryId').change(function(){         
         $.ajax({
         type: "POST",
-        url: baseHref+'/producers/ajaxGetCountryProducers',
+        url: baseHref+'producers/ajaxGetCountryProducers',
         data: "country_id=" + $('#WineCountryId').val(),
         success: function(producers){
             $('#producers-select').html(producers);
@@ -82,7 +82,7 @@ $(function() {
         
         $.ajax({
         type: "POST",
-        url: baseHref+'/regions/ajaxGetCountryRegions',
+        url: baseHref+'regions/ajaxGetCountryRegions',
         data: "country_id=" + $('#WineCountryId').val(),
         success: function(regions){
             $('#regions-select').html(regions);
@@ -102,12 +102,6 @@ $(".draggable" ).draggable({
 }
 
 function makeDroppable() {
-    var pathName = window.location.pathname;
-    var pathArray = pathName.split("/");
-    if ( pathName.substr(0,1) == "/" )       
-        var baseHref = "/" + pathArray[1];
-    else
-        var baseHref = "/" + pathArray[0];
     $(".droppable" ).droppable({
         accept: '.draggable',
         greedy: true,
@@ -127,7 +121,7 @@ function makeDroppable() {
                         $.ajax({
                         async: false,
                         type: "POST",
-                        url: baseHref+'/storages/delWineFromCabinet',
+                        url: baseHref+'storages/delWineFromCabinet',
                         dataType: 'text',
                         data: "storage_id=" + storage_id,
                         success: function(wines){
@@ -149,7 +143,7 @@ function makeDroppable() {
                 $.ajax({
                 async: false,
                 type: "POST",
-                url: baseHref+'/storages/addWineToCabinet',
+                url: baseHref+'storages/addWineToCabinet',
                 dataType: 'text',
                 data: "wine_id=" + wine_id  + '&' +
                     "line_number=" + line_number  + '&' +
@@ -187,7 +181,7 @@ function makeDroppable() {
                     $.ajax({
                     async: false,
                     type: "POST",
-                    url: baseHref+'/storages/delWineFromCabinet',
+                    url: baseHref+'storages/delWineFromCabinet',
                     dataType: 'text',
                     data: "storage_id=" + storage_id,
                     success: function(id){
