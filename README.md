@@ -4,6 +4,8 @@
 **Changelog for version 0.5**  
 * upgrade to CakePHP 2.2.5  
 * upgrade to ReportManager plugin version 0.4.5.1  
+* enhancement: javascript global var baseHref configured by cake  
+* minor: style correction  
 
 **Changelog for version 0.4**  
 * upgrade to CakePHP 2.1.1  
