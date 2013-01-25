@@ -21,19 +21,12 @@ $(function() {
         callback: function(ui, type, value){
             $('#WineRating').val(value);
         }
-    });      
-    var pathName = window.location.pathname;
-    var pathArray = pathName.split("/");
-    var firstLevel = null;
-    if ( pathName.substr(0,1) == "/" )       
-        firstLevel = "/" + pathArray[1];
-    else
-        firstLevel = "/" + pathArray[0];               
+    });                    
     
     $('#WineCountryId').change(function(){         
         $.ajax({
         type: "POST",
-        url: firstLevel+'/producers/ajaxGetCountryProducers',
+        url: baseHref+'/producers/ajaxGetCountryProducers',
         data: "country_id=" + $('#WineCountryId').val(),
         success: function(producers){
             $('#producers-select').html(producers);
@@ -42,7 +35,7 @@ $(function() {
         
         $.ajax({
         type: "POST",
-        url: firstLevel+'/regions/ajaxGetCountryRegions',
+        url: baseHref+'/regions/ajaxGetCountryRegions',
         data: "country_id=" + $('#WineCountryId').val(),
         success: function(regions){
             $('#regions-select').html(regions);
